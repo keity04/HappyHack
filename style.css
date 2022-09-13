@@ -8,42 +8,86 @@ body {
     font-family: sans-serif;
 }
 
-/* fade */
-
-.fade {
-    opacity: 0;
-    transition: opacity 3s;
-
-    animation-name: fadeDownAnime;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+section {
+    overflow: hidden;
 }
 
-.fade.view {
-    opacity: 1;
+/*ふわっとCSS*/
+.fuwatAnime {
+    -webkit-animation-fill-mode: both;
+    -ms-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1.5s;
+    -ms-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-name: fuwatAnime;
+    -ms-animation-name: fuwatAnime;
+    animation-name: fuwatAnime;
+    visibility: visible !important;
 }
 
-@keyframes fadeDownAnime {
-    from {
+@-webkit-keyframes fuwatAnime {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes fuwatAnime {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
         transform: translateY(-20px);
     }
 
-    to {
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
         transform: translateY(0);
     }
 }
 
 /* font */
 @font-face {
-    font-family: 'futura';
-    src: url('font/Futura-MedObl.ttf') format('truetyle');
-    font-weight: 100;
+    font-family: "Futura";
+    src: url(fonts/Futura-Med.ttf) format("truetype");
+    font-weight: bold;
 }
 
 @font-face {
-    font-family: 'Futura';
-    src: url('font/Futura-ExtBol.ttf') format('truetyle');
-    font-weight: 700;
+    font-family: "Futura";
+    src: url(fonts/Futura-Boo.ttf) format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: url(fonts/Futura-LigObl.ttf) format("truetype");
+    font-style: italic;
+    font-weight: lighter;
+}
+
+h2 {
+    text-align: center;
+    font-family: "Futura";
+    font-weight: bold;
+    font-size: 40pt;
+    padding: 40px;
+    color: #3D5CDB;
+}
+
+@media(max-width: 450px) {
+    h2 {
+        font-size: 200%;
+        padding-bottom: 20px;
+    }
 }
 
 /* header */
@@ -55,29 +99,66 @@ body {
     background-size: cover;
 }
 
-header p {
-    color: #fff;
-    font-family: 'futura';
-    font-size: 45px;
-    font-weight: 100;
-    margin: 30px 0 0;
-    font-style: italic;
+header {
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    height: 100vh;
 }
 
 header img {
     width: 900px;
-    height: 238px;
+    margin: auto;
 }
 
 .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+.logo p {
+    font-size: 45px;
     text-align: center;
-    padding-top: 302px;
+    margin-top: 30px;
+    color: #fff;
+    font-family: "Futura";
+    font-style: italic;
+    font-weight: lighter;
+}
+
+@media(max-width:450px) {
+    .logo img {
+        width: 70vw;
+        margin: auto;
+    }
+}
+
+@media(max-width:450px) {
+    .logo p {
+        font-size: 100%;
+        text-align: center;
+        margin-top: 20px;
+        color: #fff;
+        font-family: "Futura";
+        font-style: italic;
+        font-weight: lighter;
+    }
 }
 
 nav {
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+
+@media (max-width: 450px) {
+    nav {
+        display: none;
+    }
 }
 
 nav ul {
@@ -91,15 +172,15 @@ nav li {
 }
 
 nav a {
-    display: inline-block;
-    font-family: 'futura';
-    font-weight: lighter;
-    color: #fff;
-    font-size: 26px;
-    font-weight: bold;
+    display: block;
     text-decoration: none;
-    text-align: left;
     padding: 30px 15px 0;
+    color: #fff;
+    transition: 0.5s;
+    font-family: "Futura";
+    font-weight: normal;
+    font-size: 20pt;
+    text-align: left;
     transition: 0.5s;
 }
 
@@ -108,15 +189,6 @@ nav a:hover {
 }
 
 /* introduction */
-#introduction h2 {
-    font-family: 'futura';
-    text-align: center;
-    color: #3d5cdb;
-    padding: 40px;
-    font-size: 53px;
-    font-weight: 700;
-}
-
 .intro_detail {
     align-items: center;
     display: flex;
@@ -126,7 +198,6 @@ nav a:hover {
 
 .intro_detail img {
     width: 500px;
-    height: 333px;
     background-size: cover;
 }
 
@@ -134,7 +205,7 @@ nav a:hover {
     font-weight: lighter;
     line-height: 32px;
     margin: 0 50px 20px;
-    font-family: 'Hiragino Kaku Gothic Pro';
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif;
 }
 
 .intro_detail a {
@@ -182,6 +253,80 @@ nav a:hover {
     margin: 20px;
 }
 
+@media(max-width:450px) {
+    .intro_detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        font-size: 13px;
+    }
+
+    .intro_detail img {
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .intro_content_right {
+        width: 100%;
+        margin-bottom: 20px;
+        line-height: 2;
+    }
+
+    .intro_content_right p {
+        width: 90%;
+        margin: 0 auto;
+        font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif;
+    }
+
+    .intro_content_right a {
+        display: block;
+        margin: 30px auto;
+        text-decoration: none;
+        width: 170px;
+        height: 40px;
+        background-color: #3D5CDB;
+        color: #ffffff;
+        border-radius: 12px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .intro_content_left {
+        width: 100%;
+        margin-bottom: 20px;
+        line-height: 2;
+    }
+
+    .intro_content_left p {
+        width: 90%;
+        margin: 0 auto;
+        font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif;
+    }
+
+    .intro_content_left a {
+        display: block;
+        margin: 30px auto;
+        text-decoration: none;
+        width: 170px;
+        height: 40px;
+        background-color: #ffbf00;
+        color: #ffffff;
+        border-radius: 12px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .intro_detail2 {
+        flex-wrap: wrap-reverse;
+    }
+}
+
 /* courses */
 
 canvas {
@@ -195,25 +340,20 @@ canvas {
 }
 
 #particles-js {
-    position: absolute;
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
     z-index: -1;
 }
-
 
 #courses {
     background-color: rgba(186, 213, 245, 0.6);
     z-index: -1;
-}
-
-#courses h2 {
-    color: #3d5cdb;
-    font-family: 'futura';
-    font-size: 53px;
-    font-weight: 700;
-    padding: 40px;
-    text-align: center;
 }
 
 .course {
@@ -223,32 +363,51 @@ canvas {
     justify-content: center;
 }
 
+@media (min-width: 768px) {
+    .course-container {
+        width: 750px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 1200px) {
+    .course-container {
+        width: 1170px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
 .course-container {
-    width: 1170px;
-    height: 740px;
-    align-items: center;
+    max-width: 1200px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 50px;
 }
 
 .course_info {
-    background-color: #fff;
+    width: 180px;
+    height: 280px;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: #6a8998 0px 1px 3px 0px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 1px 3px rgba(106, 137, 152, 0.2);
     margin: 20px 10px 10px;
-    padding: 30px;
-    /* width: 240px; */
-    /* height: 340px; */
 }
 
 .course_info h3 {
     color: #183c61;
-    font-family: 'Hiragino Kaku Gothic Pro';
-    font-size: 14px;
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif;
+    font-size: 11px;
     font-weight: 700;
     margin: 10px;
     padding-top: 20px;
@@ -256,23 +415,33 @@ canvas {
 }
 
 .course_img {
-    align-items: center;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    margin: 0 15px;
-    width: 150px;
-    height: 148px;
+    align-items: center;
+}
+
+.course_img img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .course_info a {
     border-radius: 12px;
-    font-family: 'Hiragino Kaku Gothic Pro';
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif;
     font-size: 13px;
-    font-weight: 700;
     line-height: 40px;
-    margin: 15px 5px;
     text-align: center;
     color: #fff;
+    display: block;
+    margin: 15px auto;
+    text-decoration: none;
+    width: 170px;
+    height: 40px;
+    background-color: #ffbf00;
+    font-weight: bold;
 }
 
 .course_info a:hover {
@@ -307,6 +476,52 @@ canvas {
     background-color: #73cedd;
 }
 
+@media(max-width: 450px) {
+
+    .course_info {
+        width: 140px;
+        height: 200px;
+        background-color: #ffffff;
+        margin-top: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 1px 3px rgba(106, 137, 152, 0.2);
+        padding: 10px;
+    }
+
+    .course_img {
+        width: 90px;
+        height: 90px;
+        margin: 10px auto 0;
+    }
+
+
+    .course_info h3 {
+        font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, sans-serif;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .course_info a {
+        display: block;
+        margin: 15px auto;
+        text-decoration: none;
+        width: 100%;
+        height: 40px;
+        color: #ffffff;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .course_info a:hover {
+        box-shadow: 0 2px 15px 2px rgba(133, 140, 142, 0.4);
+    }
+}
+
 /* images */
 #slick {
     margin-bottom: 50px;
@@ -314,39 +529,22 @@ canvas {
 
 #slick img {
     width: 100%;
-    /* height: 256px; */
+    height: auto;
     background-size: cover;
 }
 
-#slick h2 {
-    color: #3d5cdb;
-    font-family: 'futura';
-    font-size: 53px;
-    font-weight: 700;
-    padding: 40px;
-    text-align: center;
-}
-
 .slider {
-    margin: 0 167px;
+    margin: 30px auto;
+    width: 80%;
 }
 
 /* access */
 #access {
-    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding-bottom: 40px;
-}
-
-#access h2 {
-    color: #3d5cdb;
-    font-family: 'futura';
-    font-size: 53px;
-    font-weight: 700;
-    padding: 40px;
-    text-align: center;
 }
 
 #access iframe {
@@ -354,10 +552,30 @@ canvas {
     height: 400px;
 }
 
+@media(max-width: 450px) {
+    .map {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 75%;
+    }
+
+    .map iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 /* footer */
 footer {
     color: #3d5cdb;
-    font-family: 'futura';
     line-height: 60px;
     text-align: center;
+    height: 60px;
+    font-family: "Futura";
+    font-weight: normal;
+    font-size: 1rem;
 }

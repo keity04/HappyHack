@@ -6,35 +6,41 @@ $(function ($) {
         loop: true,
     });
 
-    // スライダー
-    $('.slider').slick({
-        autoplay: false,
-        dots: true,
-        arrows: true,
-        slidesToShow: 4,
-        // centerMode: true,
-        // centerPadding: '100%',
-    });
-});
-
-// ふわっと表示
-
-window.onload = function () {
-    fade_effect();
-
-    $(window).scroll(function () {
-        fade_effect();
-    });
-
-    function fade_effect() {
-        $('.fade').each(function () {
-            const targetElement = $(this).offset().top;
-            const scroll = $(window).scrollTop();
-            const windowHeight = $(window).height();
-            if (scroll > targetElement - windowHeight) {
-                $(this).addClass('view');
-            }
+    $(document).ready(function () {
+        $('.slider').slick({
+            dots: true,
+            slidesToShow: 4,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                },
+            ]
         });
-    }
-};
+    });
 
+    // スライダー
+    // $('.slider').slick({
+    //     autoplay: false,
+    //     dots: true,
+    //     arrows: true,
+    //     slidesToShow: 4,
+    //     // centerMode: true,
+    //     // centerPadding: '100%',
+    // });
+
+});
